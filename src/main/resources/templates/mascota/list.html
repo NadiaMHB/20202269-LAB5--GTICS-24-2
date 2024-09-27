@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <title>Lista de Mascotas</title>
+</head>
+<body>
+<main>
+    <div class="container px-4 py-5">
+        <h1 class="pb-2 border-bottom">Lista de Mascotas</h1>
+        <div th:replace="fragmentos/navbar :: navbar"></div>
+        <div class="d-flex mt-3 mb-4">
+            <a class="btn btn-primary" th:href="@{'/mascotas/new'}">Nueva Mascota</a>
+        </div>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre Mascota</th>
+                <th>Género</th>
+                <th>Edad</th>
+                <th>Vacuna</th>
+                <th>¿Desparasitación</th>
+                <th>Dueño</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mascota, info : ${mascotaList}">
+                <td th:text="${info.index + 1}"></td>
+                <td th:text="${mascota.nombreMascota}"></td>
+                <td th:text="${mascota.genero}"></td>
+                <td th:text="${mascota.edad}"></td>
+                <td th:text="${mascota.vacunado}"></td>
+                <td th:text="${mascota.desparasitado}"></td>
+                <td th:text="${mascota.persona.nombre}"></td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gestionar
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{'/mascotas/details/' + ${mascota.id}}">Ver Detalles</a></li>
+                            <li><a class="dropdown-item" th:href="@{'/mascotas/edit/' + ${mascota.id}}">Editar</a></li>
+                            <li><a class="dropdown-item" th:href="@{'/mascotas/delete/' + ${mascota.id}}">Borrar</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <title>Nuevo Viaje</title>
+</head>
+<body>
+<main>
+  <div class="container px-4 py-5">
+    <h1 class="pb-2 mb-3 border-bottom">Nuevo Viaje</h1>
+    <form method="post" th:action="@{'/viajes/save'}" class="mt-2">
+
+      <div class="mb-3">
+        <label for="pickupPoint" class="form-label">Punto de Recojo</label>
+        <input name="pickupPoint" type="text" class="form-control" id="pickupPoint" required>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="cantPersonas" class="form-label">Cantidad de Personas</label>
+        <input name="cantPersonas" type="number" class="form-control" id="cantPersonas" min="1" required>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="cantPerros" class="form-label">Cantidad de Perros</label>
+        <input name="cantPerros" type="number" class="form-control" id="cantPerros" min="0" required>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="personaId" class="form-label">Titular del Viaje</label>
+        <select name="personaId" class="form-select" id="personaId" required>
+          <option th:each="persona : ${personas}" th:value="${persona.id}" th:text="${persona.nombre}"></option>
+        </select>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="lugarId" class="form-label">Destino del Viaje</label>
+        <select name="lugarId" class="form-select" id="lugarId" required>
+          <option th:each="lugar : ${lugares}" th:value="${lugar.id}" th:text="${lugar.nombreLugar}"></option>
+        </select>
+      </div>
+
+
+      <a th:href="@{'/viajes/list'}" class="btn btn-danger">Cancelar</a>
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+  </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

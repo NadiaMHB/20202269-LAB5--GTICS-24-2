@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <title>Navbar Fragment</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{'/'}">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/viajes/list'}">Lista de Viajes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/lugar/list}">Lista de Lugares</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mascotas/list}">Lista de Mascotas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/persona/list}">Lista de Personas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
